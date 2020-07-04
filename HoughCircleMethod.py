@@ -17,13 +17,30 @@ print(len(detectedcircles[0]))
 
 for (x,y,r) in detectedcircles[0, :]:
     cv2.circle(orig, (x, y), r, (255, 190, 24), 2)
+    # cv2.circle(orig, (x, y), r+7, (0, 0, 0), -1)
     # cv2.circle(orig, (x, y), 2, (255, 190, 24), 3)
 
-# img = cv2.resize(img, None, fx=0.5, fy=0.5)
-# orig = cv2.resize(orig, None, fx=0.5, fy=0.5)
+# img = cv2.cvtColor(orig, cv2.COLOR_BGR2GRAY)
+# circlessmall = cv2.HoughCircles(img, cv2.HOUGH_GRADIENT, 1,
+#                            3, param1=20, param2=8, minRadius=15, maxRadius=20)
+# # circles = cv2.HoughCircles(img, cv2.HOUGH_GRADIENT, 1, 30, param1=30, param2=55, minRadius=100, maxRadius=150)
+# detectedcircles = np.uint16(np.around(circlessmall))
+# print(detectedcircles)
+# print(len(detectedcircles[0]))
+
+# for (x, y, r) in detectedcircles[0, :]:
+#     cv2.circle(orig, (x, y), r, (255, 190, 24), 2)
+#     # cv2.circle(orig, (x, y), r+7, (0, 0, 0), -1)
+#     # cv2.circle(orig, (x, y), 2, (255, 190, 24), 3)
+
+
+img = cv2.resize(img, None, fx=0.5, fy=0.5)
+orig = cv2.resize(orig, None, fx=0.5, fy=0.5)
 
 
 cv2.imshow('original', orig)
 cv2.imshow('grayscale', img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+cv2.imwrite('bluecircles.jpg',orig)
+# cv2.imwrite('original.jpg',img)
